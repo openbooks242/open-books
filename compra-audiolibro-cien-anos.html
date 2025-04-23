@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Audiolibro - Cien Años de Soledad - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .purchase-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            padding: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .purchase-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .book-preview {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .book-cover {
+            width: 120px;
+            height: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-details h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .book-details p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .book-price {
+            font-size: 1.5rem;
+            color: #FF4500;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FF4500;
+            box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.2);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .payment-method img {
+            width: 40px;
+            height: auto;
+            filter: brightness(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover img {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .payment-method.active img {
+            filter: brightness(1.2);
+        }
+
+        .purchase-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #FF4500;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .purchase-btn:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .book-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .book-cover {
+                width: 100px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="purchase-container">
+        <form class="purchase-form" onsubmit="handlePurchase(event)">
+            <div class="book-preview">
+                <img src="img/libro2.jpg" alt="Cien Años de Soledad" class="book-cover">
+                <div class="book-details">
+                    <h2>Cien Años de Soledad</h2>
+                    <p>Gabriel García Márquez</p>
+                    <p><i class="fas fa-clock"></i> 28h 15m</p>
+                    <p><i class="fas fa-star"></i> 4.8 (2,345 reseñas)</p>
+                    <div class="book-price">$19.99</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" required placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>Método de Pago</label>
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/visa.png" alt="Visa">
+                    </div>
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/mastercard.png" alt="Mastercard">
+                    </div>
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/paypal.png" alt="PayPal">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Número de Tarjeta</label>
+                <input type="text" required placeholder="1234 5678 9012 3456">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>Fecha de Expiración</label>
+                    <input type="text" required placeholder="MM/YY">
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" required placeholder="123">
+                </div>
+            </div>
+
+            <button type="submit" class="purchase-btn">
+                <i class="fas fa-headphones"></i> Comprar y Continuar Escuchando
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function selectPaymentMethod(element) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        function handlePurchase(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: '¡Compra Exitosa!',
+                html: `
+                    <div style="text-align: left; margin-top: 1rem;">
+                        <p style="margin-bottom: 1rem;">¡Felicidades! Has adquirido "Cien Años de Soledad".</p>
+                        <p style="margin-bottom: 1rem;">📧 Recibirás un correo electrónico con:</p>
+                        <ul style="margin-left: 1rem;">
+                            <li>Confirmación de tu compra</li>
+                            <li>Enlace para acceder al audiolibro completo</li>
+                            <li>Instrucciones para continuar desde donde lo dejaste</li>
+                        </ul>
+                    </div>
+                `,
+                icon: 'success',
+                confirmButtonColor: '#FF4500',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                }
+            }).then(() => {
+                window.location.href = 'audiolibro-preview.html';
+            });
+        }
+    </script>
+</body>
+</html> 

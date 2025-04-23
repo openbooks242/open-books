@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        :root {
+            --primary-red: #FF0000;
+            --dark-red: #cc0000;
+            --light-red: rgba(255, 0, 0, 0.1);
+            --text-white: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.7);
+            --bg-dark: #121212;
+            --bg-darker: #0a0a0a;
+            --bg-light: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-darker);
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-header {
+            padding: 0 2rem 2rem;
+            border-bottom: 1px solid var(--bg-light);
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: var(--text-white);
+            letter-spacing: 1;
+        }
+
+        .logo-open {
+            color: var(--text-white);
+            margin-right: 0px;
+        }
+
+        .logo-books {
+            color: var(--primary-red);
+        }
+
+        .admin-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+        }
+
+        .admin-menu-item {
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            background: var(--bg-light);
+        }
+
+        .admin-menu-item i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .admin-menu-item:hover,
+        .admin-menu-item.active {
+            background: var(--primary-red);
+            transform: translateX(5px);
+        }
+
+        .admin-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-white);
+            margin: 0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--light-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            font-size: 1.5rem;
+        }
+
+        .stat-info h3 {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .stat-info p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-white);
+            margin: 0.5rem 0 0;
+        }
+
+        .users-table {
+            background: var(--bg-darker);
+            border-radius: 15px;
+            border: 1px solid var(--bg-light);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .users-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .users-table th {
+            background: var(--bg-light);
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .users-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        .status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status.active {
+            background: rgba(0, 200, 83, 0.1);
+            color: #00c853;
+        }
+
+        .status.inactive {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff1744;
+        }
+
+        .action-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--bg-light);
+            color: var(--text-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .product-form {
+            background: var(--bg-darker);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--bg-light);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--bg-light);
+            border-radius: 8px;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-red);
+            outline: none;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .submit-btn,
+        .cancel-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn {
+            background: var(--primary-red);
+            color: var(--text-white);
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: var(--bg-light);
+            color: var(--text-white);
+        }
+
+        .cancel-btn:hover {
+            background: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .admin-sidebar {
+                width: 80px;
+                padding: 1rem 0;
+            }
+
+            .admin-content {
+                margin-left: 80px;
+            }
+
+            .logo-text span {
+                display: none;
+            }
+
+            .admin-menu-item span {
+                display: none;
+            }
+
+            .admin-menu-item {
+                padding: 1rem;
+                justify-content: center;
+            }
+
+            .admin-menu-item i {
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                flex-direction: column;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+            }
+
+            .admin-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .submit-btn,
+            .cancel-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span><span class="logo-books">Books</span>
+                </a>
+            </div>
+            <nav class="admin-menu">
+                <a href="#" class="admin-menu-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="admin-menu-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>Usuarios</span>
+                </a>
+                <a href="#" class="admin-menu-item" data-section="products">
+                    <i class="fas fa-book"></i>
+                    <span>Productos</span>
+                </a>
+                <a href="#" class="admin-menu-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Configuración</span>
+                </a>
+                <a href="#" class="admin-menu-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Dashboard -->
+            <div class="admin-section active" id="dashboard">
+                <div class="content-header">
+                    <h2 class="section-title" style="color: #000000;">Dashboard</h2>
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span>Admin</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Usuarios Totales</h3>
+                                <p data-value="150">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Productos</h3>
+                                <p data-value="324">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Usuarios Activos</h3>
+                                <p data-value="87">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users -->
+            <div class="admin-section" id="users">
+                <div class="content-header">
+                    <h2 class="section-title" style="color: #000000;">Usuarios Registrados</h2>
+                    <button class="submit-btn" onclick="showAddUserForm()" style="background: #000000; color: white;">
+                        <i class="fas fa-user-plus"></i>
+                        Agregar Usuario
+                    </button>
+                </div>
+
+                <!-- Formulario para agregar/editar usuario -->
+                <div class="product-form" id="userForm" style="display: none; background: var(--bg-darker);">
+                    <h2 style="color: var(--text-white);">Gestión de Usuario</h2>
+                    <br>
+                    <form id="userManagementForm" onsubmit="handleUserSubmit(event)">
+                        <div class="form-group">
+                            <label style="color: var(--text-white);">Nombre</label>
+                            <input type="text" name="userName" required style="color: var(--text-white);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: var(--text-white);">Email</label>
+                            <input type="email" name="userEmail" required style="color: var(--text-white);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: var(--text-white);">Contraseña</label>
+                            <input type="password" name="userPassword" required style="color: var(--text-white);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: var(--text-white);">Tipo de Usuario</label>
+                            <select name="userType" required style="color: var(--text-white);">
+                                <option value="admin">Administrador</option>
+                                <option value="moderator">Moderador</option>
+                                <option value="user">Usuario Simple</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn" style="background: #000000; color: white;">
+                                <i class="fas fa-save"></i>
+                                Guardar
+                            </button>
+                            <button type="button" class="cancel-btn" onclick="hideUserForm()">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="users-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="admin-section" id="products">
+                <div class="content-header">
+                    <h2 class="section-title" style="color: #000000;">Gestión de Productos</h2>
+                </div>
+                <button class="submit-btn" onclick="showAddProductForm()" style="background: #000000; color: white;">
+                    <i class="fas fa-plus"></i>
+                    Agregar Producto
+                </button>
+
+                <div class="product-form" style="display: none;">
+                    <h3>Nuevo Producto</h3>
+                    <form id="newProductForm" onsubmit="handleProductSubmit(event)">
+                        <div class="form-group">
+                            <label style="color: #000000;">Título</label>
+                            <input type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #000000;">Tipo</label>
+                            <select name="type" required>
+                                <option value="audiolibro">Audiolibro</option>
+                                <option value="ebook">eBook</option>
+                                <option value="audioserie">Audioserie</option>
+                                <option value="pelicula">Película</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <input type="file" name="image" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Precio</label>
+                            <input type="number" name="price" step="0.01" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-save"></i>
+                                Guardar
+                            </button>
+                            <button type="button" class="cancel-btn" onclick="hideAddProductForm()">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="admin-section" id="settings">
+                <div class="content-header">
+                    <h2 class="section-title" style="color: #000000;">Configuración</h2>
+                </div>
+                <div class="product-form">
+                    <form class="settings-form" onsubmit="handleSettingsSubmit(event)">
+                        <div class="form-group">
+                            <label style="color: #000000;">Nombre del Sitio</label>
+                            <input type="text" name="siteName" value="Open Books" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #000000;">Email de Contacto</label>
+                            <input type="email" name="contactEmail" value="contacto@openbooks.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #000000;">Tema</label>
+                            <select name="theme" required>
+                                <option value="light">Claro</option>
+                                <option value="dark">Oscuro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #000000;">Redes Sociales</label>
+                            <input type="text" name="instagram" placeholder="Instagram URL" required>
+                            <input type="text" name="facebook" placeholder="Facebook URL" required>
+                            <input type="text" name="twitter" placeholder="Twitter URL" required>
+                            <input type="text" name="youtube" placeholder="YouTube URL" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #000000;">Descripción del Sitio</label>
+                            <textarea name="siteDescription" required>Open Books se presenta como una alternativa moderna y accesible que combina el contenido cultural y recreativo, con productos desde $7.99 y cancela en cualquier momento.</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-save"></i>
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Verificar autenticación
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminEmail = sessionStorage.getItem('adminEmail');
+            if (!adminEmail) {
+                window.location.href = 'login.html';
+            }
+            loadRegisteredUsers();
+            initializeMenu();
+            animateStats();
+        });
+
+        // Navegación del menú
+        function initializeMenu() {
+            const menuItems = document.querySelectorAll('.admin-menu-item');
+            const sections = document.querySelectorAll('.admin-section');
+
+            menuItems.forEach(item => {
+                if (item.hasAttribute('data-section')) {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        menuItems.forEach(i => i.classList.remove('active'));
+                        sections.forEach(s => s.classList.remove('active'));
+
+                        item.classList.add('active');
+                        const targetSection = document.getElementById(item.dataset.section);
+                        if (targetSection) {
+                            targetSection.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Animación de estadísticas
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-info p');
+            stats.forEach(stat => {
+                const value = parseInt(stat.dataset.value);
+                animateValue(stat, 0, value, 2000);
+            });
+        }
+
+        function animateValue(element, start, end, duration) {
+            const range = end - start;
+            const increment = end > start ? 1 : -1;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = current;
+                if (current === end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        // Gestión de usuarios
+        let editingUserId = null;
+
+        function showAddUserForm() {
+            document.getElementById('userForm').style.display = 'block';
+            document.getElementById('userManagementForm').reset();
+            editingUserId = null;
+        }
+
+        function hideUserForm() {
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('userManagementForm').reset();
+            editingUserId = null;
+        }
+
+        function editUser(userId) {
+            const user = registeredUsers.find(u => u.id === userId);
+            if (user) {
+                editingUserId = userId;
+                const form = document.getElementById('userManagementForm');
+                form.userName.value = user.name;
+                form.userEmail.value = user.email;
+                form.userType.value = user.type;
+                document.getElementById('userForm').style.display = 'block';
+            }
+        }
+
+        function deleteUser(userId) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#FF0000',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    registeredUsers = registeredUsers.filter(u => u.id !== userId);
+                    loadRegisteredUsers();
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El usuario ha sido eliminado.',
+                        'success'
+                    );
+                }
+            });
+        }
+
+        function handleUserSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const userData = Object.fromEntries(formData.entries());
+
+            if (editingUserId) {
+                // Actualizar usuario existente
+                const index = registeredUsers.findIndex(u => u.id === editingUserId);
+                if (index !== -1) {
+                    registeredUsers[index] = {
+                        ...registeredUsers[index],
+                        name: userData.userName,
+                        email: userData.userEmail,
+                        type: userData.userType
+                    };
+                }
+            } else {
+                // Agregar nuevo usuario
+                const newUser = {
+                    id: Date.now(),
+                    name: userData.userName,
+                    email: userData.userEmail,
+                    type: userData.userType,
+                    status: 'active'
+                };
+                registeredUsers.push(newUser);
+            }
+
+            loadRegisteredUsers();
+            hideUserForm();
+            
+            Swal.fire({
+                title: '¡Éxito!',
+                text: editingUserId ? 'Usuario actualizado correctamente' : 'Usuario agregado correctamente',
+                icon: 'success',
+                confirmButtonColor: '#FF0000'
+            });
+        }
+
+        function loadRegisteredUsers() {
+            const usersTableBody = document.getElementById('usersTableBody');
+            usersTableBody.innerHTML = '';
+            
+            registeredUsers.forEach(user => {
+                const row = `
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.type}</td>
+                        <td><span class="status ${user.status}">${user.status === 'active' ? 'Activo' : 'Inactivo'}</span></td>
+                        <td>
+                            <button class="action-btn" onclick="editUser(${user.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn" onclick="deleteUser(${user.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                usersTableBody.innerHTML += row;
+            });
+        }
+
+        // Inicializar usuarios de ejemplo
+        let registeredUsers = [
+            { id: 1, name: 'Admin Principal', email: 'admin@openbooks.com', type: 'admin', status: 'active' },
+            { id: 2, name: 'Moderador', email: 'mod@openbooks.com', type: 'moderator', status: 'active' },
+            { id: 3, name: 'Usuario Ejemplo', email: 'usuario@ejemplo.com', type: 'user', status: 'active' }
+        ];
+
+        // Gestión de productos
+        function showAddProductForm() {
+            document.querySelector('.product-form').style.display = 'block';
+            document.querySelector('.submit-btn').style.display = 'none';
+        }
+
+        function hideAddProductForm() {
+            document.querySelector('.product-form').style.display = 'none';
+            document.querySelector('.submit-btn').style.display = 'block';
+            document.getElementById('newProductForm').reset();
+        }
+
+        function handleProductSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const productData = Object.fromEntries(formData.entries());
+            
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Producto agregado correctamente',
+                icon: 'success',
+                confirmButtonColor: '#FF0000',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                }
+            });
+
+            hideAddProductForm();
+        }
+
+        // Cerrar sesión
+        function logout() {
+            Swal.fire({
+                title: '¿Cerrar sesión?',
+                text: '¿Estás seguro de que deseas cerrar sesión?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#FF0000',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, cerrar sesión',
+                cancelButtonText: 'Cancelar',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sessionStorage.removeItem('adminEmail');
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Función para manejar el envío del formulario de configuración
+        function handleSettingsSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const settingsData = Object.fromEntries(formData.entries());
+            
+            // Aquí se enviarían los datos al servidor para actualizar la configuración
+            console.log('Configuración actualizada:', settingsData);
+            
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Configuración actualizada correctamente',
+                icon: 'success',
+                confirmButtonColor: '#FF0000',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Books - Audioseries Ilimitadas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/audioseries.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span>
+                    <span class="logo-books">Books</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="audiolibros.html" class="nav-link">Audiolibros</a>
+                <a href="ebooks.html" class="nav-link">eBooks</a>
+                <a href="audioseries.html" class="nav-link">Audioseries</a>
+                <a href="peliculas.html" class="nav-link">Películas</a>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="nav-link">Iniciar sesión</a>
+                <a href="planes.html" class="nav-link subscribe-btn">
+                    <i class="fas fa-crown"></i>
+                    Suscríbete
+                </a>
+                <div class="search-container">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar series, géneros...">
+                        <span class="search-close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<br><br>
+    <!-- Sección Hero -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Audioseries</h1>
+            <div class="hero-text">
+                <p>Sumérgete en historias inmersivas con nuestras audioseries originales. Más de 200 series exclusivas con nuevos episodios cada semana. Drama, misterio, ciencia ficción y más.</p>
+            </div>
+            <a href="planes.html" class="subscribe-button">
+                <i class="fas fa-crown"></i>
+                COMENZAR PRUEBA GRATIS
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="img/hero-audioseries.jpg" alt="Persona escuchando audioserie">
+        </div>
+    </section>
+
+    <!-- Contenido principal de audioseries -->
+    <main class="main-content">
+        <section class="catalog-section">
+            <div class="category">
+                <div class="category-title">
+                    <h2>Series Destacadas</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">Todas</button>
+                        <button class="filter-btn" data-filter="free">Gratuitas</button>
+                        <button class="filter-btn" data-filter="premium">Premium</button>
+                    </div>
+                </div>
+
+                <div class="series-grid">
+                    <!-- Serie 1 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie1.jpg" alt="El Caso Henderson">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Caso Henderson</h3>
+                            <p class="series-genre">Thriller | Misterio</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (2.3k)</span>
+                            </div>
+                            <button class="listen-button" onclick="window.location.href='compra-audio-serie.html'">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 2 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie2.jpg" alt="Voces del Pasado">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">Voces del Pasado</h3>
+                            <p class="series-genre">Drama Histórico</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">30 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (1.8k)</span>
+                            </div>
+                            <button class="listen-button" onclick="window.location.href='voces-pasado-preview.html'">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 3 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie3.jpg" alt="2084">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">2084</h3>
+                            <p class="series-genre">Ciencia Ficción</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (3.2k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 4 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie4.jpg" alt="La Sombra del Tiempo">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">La Sombra del Tiempo</h3>
+                            <p class="series-genre">Fantasía | Aventura</p>
+                            <div class="series-meta">
+                                <span class="episodes">15 episodios</span>
+                                <span class="duration">35 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0 (1.5k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 5 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie5.jpg" alt="El Laberinto de los Sueños">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Laberinto de los Sueños</h3>
+                            <p class="series-genre">Psicológico | Suspenso</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">50 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (2.1k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 6 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie6.jpg" alt="Crónicas del Futuro">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">Crónicas del Futuro</h3>
+                            <p class="series-genre">Ciencia Ficción | Drama</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.2 (1.9k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 7 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie7.jpg" alt="El Secreto de la Luna">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Secreto de la Luna</h3>
+                            <p class="series-genre">Misterio | Aventura</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (2.5k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 8 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie8.jpg" alt="Voces del Silencio">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">Voces del Silencio</h3>
+                            <p class="series-genre">Drama | Romance</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">35 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (1.7k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 9 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie9.jpg" alt="El Jardín de los Secretos">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Jardín de los Secretos</h3>
+                            <p class="series-genre">Thriller | Drama</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (2.8k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 10 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie10.jpg" alt="La Última Frontera">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">La Última Frontera</h3>
+                            <p class="series-genre">Aventura | Ciencia Ficción</p>
+                            <div class="series-meta">
+                                <span class="episodes">15 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.1 (1.6k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 11 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie11.jpg" alt="El Espejo del Alma">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Espejo del Alma</h3>
+                            <p class="series-genre">Psicológico | Misterio</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">50 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (2.2k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 12 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie12.jpg" alt="El Vuelo del Fénix">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Vuelo del Fénix</h3>
+                            <p class="series-genre">Fantasía | Aventura</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.3 (1.8k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 13 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie13.jpg" alt="El Laberinto del Tiempo">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Laberinto del Tiempo</h3>
+                            <p class="series-genre">Ciencia Ficción | Thriller</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (2.4k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 14 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie14.jpg" alt="La Sombra del Viento">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">La Sombra del Viento</h3>
+                            <p class="series-genre">Drama | Misterio</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">35 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (1.9k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 15 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie15.jpg" alt="El Secreto de la Montaña">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Secreto de la Montaña</h3>
+                            <p class="series-genre">Aventura | Drama</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.2 (1.7k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 16 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie16.jpg" alt="El Jardín de los Sueños">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Jardín de los Sueños</h3>
+                            <p class="series-genre">Fantasía | Romance</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">30 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (1.6k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 17 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie17.jpg" alt="El Espejo del Tiempo">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Espejo del Tiempo</h3>
+                            <p class="series-genre">Ciencia Ficción | Misterio</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (2.3k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 18 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie18.jpg" alt="La Última Estación">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">La Última Estación</h3>
+                            <p class="series-genre">Drama | Suspenso</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.1 (1.5k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 19 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie19.jpg" alt="El Vuelo de la Noche">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Vuelo de la Noche</h3>
+                            <p class="series-genre">Thriller | Aventura</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">50 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (2.1k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 20 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie20.jpg" alt="El Laberinto de Cristal">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Laberinto de Cristal</h3>
+                            <p class="series-genre">Fantasía | Misterio</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">35 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.2 (1.8k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 21 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie21.jpg" alt="El Secreto del Mar">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Secreto del Mar</h3>
+                            <p class="series-genre">Aventura | Drama</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (2.6k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 22 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie22.jpg" alt="La Sombra del Sol">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">La Sombra del Sol</h3>
+                            <p class="series-genre">Ciencia Ficción | Thriller</p>
+                            <div class="series-meta">
+                                <span class="episodes">10 episodios</span>
+                                <span class="duration">45 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (2.0k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 23 -->
+                    <div class="series-card" data-category="premium">
+                        <div class="series-badge premium">Premium</div>
+                        <div class="series-image">
+                            <img src="img/serie23.jpg" alt="El Jardín de los Secretos">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Jardín de los Secretos</h3>
+                            <p class="series-genre">Misterio | Drama</p>
+                            <div class="series-meta">
+                                <span class="episodes">8 episodios</span>
+                                <span class="duration">40 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.3 (1.9k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar ahora <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Serie 24 -->
+                    <div class="series-card" data-category="free">
+                        <div class="series-badge free">Gratis</div>
+                        <div class="series-image">
+                            <img src="img/serie24.jpg" alt="El Vuelo del Águila">
+                            <div class="series-type">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                        </div>
+                        <div class="series-info">
+                            <h3 class="series-title">El Vuelo del Águila</h3>
+                            <p class="series-genre">Aventura | Fantasía</p>
+                            <div class="series-meta">
+                                <span class="episodes">12 episodios</span>
+                                <span class="duration">35 min/ep</span>
+                            </div>
+                            <div class="series-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (1.7k)</span>
+                            </div>
+                            <button class="listen-button">
+                                Escuchar gratis <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sección de Información -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-podcast"></i>
+                </div>
+                <h3>Series Originales</h3>
+                <p>Más de 200 audioseries originales producidas con los mejores narradores y efectos de sonido.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Nuevos Episodios</h3>
+                <p>Actualizaciones semanales con nuevos episodios de tus series favoritas.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-headphones-alt"></i>
+                </div>
+                <h3>Audio Inmersivo</h3>
+                <p>Experiencia sonora de alta calidad con efectos 3D y música original.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>Descarga Offline</h3>
+                <p>Descarga tus episodios favoritos y escúchalos sin conexión donde quieras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Funcionalidad de filtrado
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const series = document.querySelectorAll('.series-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    series.forEach(serie => {
+                        if (filterValue === 'all' || serie.getAttribute('data-category') === filterValue) {
+                            serie.style.display = 'block';
+                        } else {
+                            serie.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

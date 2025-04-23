@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Books - Audiolibros y eBooks ilimitados</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/session.js"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span>
+                    <span class="logo-books">Books</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="audiolibros.html" class="nav-link">Audiolibros</a>
+                <a href="ebooks.html" class="nav-link">eBooks</a>
+                <a href="audioseries.html" class="nav-link">Audioseries</a>
+                <a href="peliculas.html" class="nav-link">Películas</a>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="nav-link login-link">Iniciar Sesión</a>
+                <a href="planes.html" class="nav-link subscribe-btn">
+                    <i class="fas fa-crown"></i>
+                    Suscríbete
+                </a>
+                <div class="search-container">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar libros, autores...">
+                        <span class="search-close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Historias para todos</h1>
+                <p>Open Books se presenta como una alternativa moderna y accesible que combina el contenido cultural y recreativo, con productos desde $7.99 y cancela en cualquier momento.</p>
+                <a href="planes.html" class="subscribe-button">
+                    <i class="fas fa-crown"></i>
+                    COMENZAR PRUEBA GRATIS
+                </a>
+            </div>
+            
+            <!-- Featured Audiobook Player -->
+            <div class="featured-audiobook">
+                <div class="audiobook-cover">
+                    <img src="img/alas-de-hierro.jpeg" alt="Alas de Hierro">
+                </div>
+                <div class="audio-player">
+                    <div class="audiobook-title">Escuchar un Fragmento</div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span class="current-time">0:00</span>
+                        <span class="duration">6:24</span>
+                    </div>
+                    <div class="player-controls">
+                        <button class="player-btn rewind-btn">
+                            <i class="fas fa-backward"></i>
+                        </button>
+                        <button class="player-btn play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="player-btn forward-btn">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Características -->
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>eBooks</h3>
+                <p>Accede a nuestra extensa biblioteca digital con los mejores títulos de literatura universal, bestsellers y clásicos.</p>
+              
+                <a href="ebooks.html" class="feature-button">
+                    <span>Ver ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <h3>Audiolibros</h3>
+                <p>Disfruta de tus libros favoritos narrados por profesionales con efectos de sonido y música de fondo.</p>
+                
+                <a href="audiolibros.html" class="feature-button">
+                    <span>Ver ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Películas</h3>
+                <p>Mira las mejores películas y series en cualquier momento, con calidad 4K y subtítulos en múltiples idiomas.</p>
+                
+                <a href="peliculas.html" class="feature-button">
+                    <span>Ver ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="features-cta">
+            <a href="planes.html" class="subscribe-button">
+                <i class="fas fa-crown"></i>
+                COMENZAR PRUEBA GRATIS
+            </a>
+        </div>
+    </section>
+
+    <!-- Anywhere Section -->
+    <section class="anywhere-section">
+        <div class="anywhere-container">
+            <div class="anywhere-content">
+                <h2>En cualquier momento, en cualquier lugar</h2>
+                <p>Lee en la cama o escucha mientras viajas. Descarga audiolibros y libros electrónicos. Escucha o lee sin conexión desde tus dispositivos favoritos.</p>
+                <div class="anywhere-cta">
+                    <a href="planes.html" class="subscribe-button">
+                        <i class="fas fa-crown"></i>
+                        COMENZAR PRUEBA GRATIS
+                    </a>
+                </div>
+            </div>
+            <div class="anywhere-grid">
+                <img src="img/device-1.jpg" alt="Escuchando mientras conduces" class="anywhere-image">
+                <img src="img/device-2.jpg" alt="Leyendo en casa" class="anywhere-image">
+                <img src="img/device-3.jpg" alt="Escuchando con auriculares" class="anywhere-image">
+                <img src="img/device-4.jpg" alt="Leyendo mientras caminas" class="anywhere-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Redes Sociales -->
+    <section class="social-section">
+        <div class="social-content">
+            <h2>Conéctate con nosotros</h2>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/openbooks.1?utm_source=qr&igsh=ZHZib215b3Z6eTA0" class="social-card instagram" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>@openbooks.1</p>
+                    <span class="followers">250K seguidores</span>
+                    <div class="social-button">
+                        <span>Seguir</span>
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/share/1C7ZfjGw3c/" class="social-card facebook" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                    <i class="fab fa-facebook"></i>
+                    <h3>Facebook</h3>
+                    <p>OpenBooks Oficial</p>
+                    <span class="followers">180K seguidores</span>
+                    <div class="social-button">
+                        <span>Me gusta</span>
+                    </div>
+                </a>
+
+                <a href="https://x.com/Openbooks0318?t=4PLp56SPPYZ4zEpjxfL6rw&s=09" class="social-card twitter" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                    <i class="fab fa-twitter"></i>
+                    <h3>Twitter</h3>
+                    <p>@Openbooks0318</p>
+                    <span class="followers">120K seguidores</span>
+                    <div class="social-button">
+                        <span>Seguir</span>
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@openbooks-d9d?si=WddXKYjJ9MQzzASL" class="social-card youtube" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube</h3>
+                    <p>OpenBooks Channel</p>
+                    <span class="followers">300K suscriptores</span>
+                    <div class="social-button">
+                        <span>Suscribirse</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Compañía</h3>
+                <ul>
+                    <li><a href="#">Acerca de Open Books</a></li>
+                    <li><a href="#">Únete al equipo</a></li>
+                    <li><a href="#">Inversores</a></li>
+                    <li><a href="#">Prensa</a></li>
+                    <li><a href="#">Sustentabilidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Explorar</h3>
+                <ul>
+                    <li><a href="#">Buscar</a></li>
+                    <li><a href="#">Títulos</a></li>
+                    <li><a href="#">Audio series</a></li>
+                    <li><a href="#">Open Books Originals</a></li>
+                    <li><a href="#">Autores</a></li>
+                    <li><a href="#">Narradores</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces importantes</h3>
+                <ul>
+                    <li><a href="#">Contacto y ayuda</a></li>
+                    <li><a href="#">Canjear tarjeta de regalo</a></li>
+                </ul>
+                <div class="app-stores">
+                    <a href="#" target="_blank">
+                        
+                    </a>
+                    <a href="#" target="_blank">
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Idioma y región</h3>
+                <div class="language-region">
+                    <div class="language">
+                        <i class="fas fa-globe"></i>
+                        <span>Español</span>
+                    </div>
+                    <div class="region">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>América Latina</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="legal-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Condiciones de uso</a>
+                <a href="#">Cookies</a>
+            </div>
+            <div class="payment-methods">
+                <img src="img/mastercard.png" alt="Mastercard">
+                <img src="img/visa.png" alt="Visa">
+                <img src="img/paypal.png" alt="Paypal">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Agregar el audio (oculto) -->
+    <audio id="audiobook-player" preload="metadata">
+        <source src="assets/audio/alas-de-hierro-sample.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/features.js"></script>
+    <script src="js/audio-player.js"></script>
+</body>
+</html>

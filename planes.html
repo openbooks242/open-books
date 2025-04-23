@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Suscripción - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #FF4500;
+            --dark-orange: #ff5722;
+            --light-orange: rgba(255, 69, 0, 0.1);
+            --text-white: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.7);
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-light: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .plans-container {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(5,5,5,0.95) 100%);
+        }
+
+        .plans-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,69,0,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,69,0,0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .plans-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .plans-header h1 {
+            font-size: 3.5rem;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, var(--text-white), var(--primary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .plans-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .plans-header p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .plan-card {
+            background: rgba(10, 10, 10, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid var(--bg-light);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,69,0,0.05));
+            z-index: 1;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 40px rgba(255,69,0,0.2);
+        }
+
+        .plan-card.popular {
+            border-color: var(--primary-orange);
+            background: linear-gradient(145deg, rgba(10,10,10,0.9), rgba(5,5,5,0.9));
+            transform: scale(1.05);
+        }
+
+        .plan-card.popular::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 100px 100px 0;
+            border-color: transparent var(--primary-orange) transparent transparent;
+            z-index: 2;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--primary-orange);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255,69,0,0.3);
+            animation: pulse 2s infinite;
+            z-index: 3;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .plan-icon {
+            font-size: 3.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255,69,0,0.3);
+            position: relative;
+        }
+
+        .plan-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .plan-name {
+            font-size: 2rem;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            color: var(--text-white);
+            margin-bottom: 2rem;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 3rem 0;
+        }
+
+        .plan-features li {
+            color: var(--text-gray);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .plan-features li:hover {
+            color: var(--text-white);
+            transform: translateX(5px);
+            background: rgba(255,69,0,0.1);
+        }
+
+        .plan-features li i {
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+        }
+
+        .plan-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--primary-orange);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(255,69,0,0.3);
+        }
+
+        .plan-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+            z-index: -1;
+        }
+
+        .plan-button:hover {
+            background: var(--dark-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,69,0,0.4);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,69,0,0.05);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.popular {
+                transform: scale(1);
+            }
+
+            .plan-card.popular:hover {
+                transform: translateY(-15px);
+            }
+
+            .plans-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="plans-container">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 10%;"></div>
+            <div class="floating-element" style="width: 150px; height: 150px; top: 30%; right: 10%;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%;"></div>
+        </div>
+
+        <div class="plans-header">
+            <h1>Elige tu Plan Perfecto</h1>
+            <p>Selecciona el plan que mejor se adapte a tus necesidades y comienza a disfrutar de todo nuestro contenido premium</p>
+        </div>
+
+        <div class="plans-grid">
+            <!-- Plan Mensual -->
+            <div class="plan-card">
+                <div class="plan-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2 class="plan-name">Plan Mensual</h2>
+                <div class="plan-price">
+                    $7.99<span>/mes</span>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Acceso a todo el catálogo</li>
+                    <li><i class="fas fa-check"></i> Sin compromisos</li>
+                    <li><i class="fas fa-check"></i> Cancelación en cualquier momento</li>
+                    <li><i class="fas fa-check"></i> Soporte básico</li>
+                </ul>
+                <a href="subscribe.html?plan=monthly" class="plan-button">Elegir Plan Mensual</a>
+            </div>
+
+            <!-- Plan Anual -->
+            <div class="plan-card popular">
+                <div class="popular-badge">Más Popular</div>
+                <div class="plan-icon">
+                    <i class="fas fa-calendar-star"></i>
+                </div>
+                <h2 class="plan-name">Plan Anual</h2>
+                <div class="plan-price">
+                    $79.99<span>/año</span>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Todo lo del plan mensual</li>
+                    <li><i class="fas fa-check"></i> Ahorro del 16%</li>
+                    <li><i class="fas fa-check"></i> Contenido exclusivo</li>
+                    <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                </ul>
+                <a href="subscribe.html?plan=annual" class="plan-button">Elegir Plan Anual</a>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="plan-card">
+                <div class="plan-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h2 class="plan-name">Plan Premium</h2>
+                <div class="plan-price">
+                    $14.99<span>/mes</span>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Todo lo del plan anual</li>
+                    <li><i class="fas fa-check"></i> Acceso anticipado</li>
+                    <li><i class="fas fa-check"></i> Contenido premium</li>
+                    <li><i class="fas fa-check"></i> Soporte VIP 24/7</li>
+                </ul>
+                <a href="subscribe.html?plan=premium" class="plan-button">Elegir Plan Premium</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Guardar el plan seleccionado en localStorage
+        document.querySelectorAll('.plan-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const plan = this.getAttribute('href').split('=')[1];
+                localStorage.setItem('selectedPlan', plan);
+            });
+        });
+
+        // Efecto de hover en las tarjetas
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('popular') 
+                    ? 'scale(1.05) translateY(-15px)' 
+                    : 'translateY(-15px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = this.classList.contains('popular') 
+                    ? 'scale(1.05)' 
+                    : 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html> 

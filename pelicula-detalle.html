@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inside Out 2 - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pelicula-detalle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #FF0000;
+            --dark-red: #cc0000;
+            --light-red: rgba(255, 0, 0, 0.1);
+            --text-white: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            background: #000;
+            color: var(--text-white);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .movie-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .movie-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .backdrop-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.8) 0%, 
+                rgba(0,0,0,0.95) 100%);
+            z-index: 2;
+        }
+
+        .movie-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .movie-poster {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            aspect-ratio: 2/3;
+        }
+
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-poster:hover img {
+            transform: scale(1.05);
+        }
+
+        .movie-info {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            flex-wrap: wrap;
+        }
+
+        .movie-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .movie-meta i {
+            color: var(--primary-red);
+        }
+
+        .movie-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-white);
+        }
+
+        .movie-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .rating-stars i {
+            color: var(--primary-red);
+        }
+
+        .movie-genres {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .genre-tag {
+            background: var(--light-red);
+            color: var(--text-white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag:hover {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .movie-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .movie-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .primary-button {
+            background: var(--primary-red);
+            color: var(--text-white);
+        }
+
+        .primary-button:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .secondary-button {
+            background: var(--light-red);
+            color: var(--text-white);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .movie-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .trailer-section {
+            margin: 5rem 0;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 80%;
+            background: var(--primary-red);
+        }
+
+        .trailer-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .trailer-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .cast-section {
+            margin: 5rem 0;
+            padding: 0 2rem;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+
+        .cast-member {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cast-member:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .cast-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary-red);
+        }
+
+        .cast-member h4 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cast-member p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .related-movies {
+            margin: 5rem 0;
+            padding: 0 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .movie-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .movie-card .movie-info {
+            padding: 1.5rem;
+        }
+
+        .movie-card h3 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .movie-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .movie-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .movie-poster {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .movie-title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .movie-meta {
+                justify-content: center;
+            }
+
+            .movie-genres {
+                justify-content: center;
+            }
+
+            .movie-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .movie-hero {
+                min-height: auto;
+                padding: 1rem 0;
+            }
+
+            .movie-poster {
+                max-width: 300px;
+            }
+
+            .movie-title {
+                font-size: 2rem;
+            }
+
+            .movie-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .movie-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span>
+                    <span class="logo-books">Books</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="audiolibros.html" class="nav-link">Audiolibros</a>
+                <a href="ebooks.html" class="nav-link">eBooks</a>
+                <a href="audioseries.html" class="nav-link">Audioseries</a>
+                <a href="peliculas.html" class="nav-link active">Películas</a>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="nav-link">Iniciar sesión</a>
+                <a href="planes.html" class="nav-link subscribe-btn">
+                    <i class="fas fa-crown"></i>
+                    Suscríbete
+                </a>
+                <div class="search-container">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar libros, autores...">
+                        <span class="search-close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<br>
+    <!-- Hero Section -->
+    <section class="movie-hero">
+        <div class="hero-background" style="background-image: url('img/inside-out-2-bg.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="movie-poster">
+                <img src="img/inside-out-2.jpg" alt="Inside Out 2">
+            </div>
+            <div class="movie-info">
+                <h1 class="movie-title">Inside Out 2</h1>
+                <div class="movie-meta">
+                    <span class="year">2024</span>
+                    <span class="duration">1h 45min</span>
+                    <span class="rating">
+                        <i class="fas fa-star"></i>
+                        4.8
+                    </span>
+                </div>
+                <div class="movie-genres">
+                    <span class="genre-tag">Animación</span>
+                    <span class="genre-tag">Comedia</span>
+                    <span class="genre-tag">Aventura</span>
+                </div>
+                <p class="movie-description">
+                    Riley, ahora una adolescente, enfrenta nuevos desafíos emocionales cuando surgen nuevas emociones en su mente. Alegría, Tristeza, Ira, Miedo y Asco deben aprender a trabajar con Ansiedad, Envidia, Vergüenza y Aburrimiento mientras Riley navega por la complejidad de la adolescencia.
+                </p>
+                <div class="movie-actions">
+                    <a href="planes.html" class="watch-button">
+                        <i class="fas fa-play"></i>
+                        Ver ahora
+                    </a>
+                    <button class="trailer-button" onclick="showTrailer()">
+                        <i class="fas fa-film"></i>
+                        Ver tráiler
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal del Tráiler -->
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeTrailer()">&times;</span>
+            <video id="trailerVideo" controls>
+                <source src="https://caribbeancinemas.com/img/trailers/9344.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <!-- Detalles de la Película -->
+    <section class="movie-details">
+        <div class="details-container">
+            <div class="details-section">
+                <h2>Sinopsis</h2>
+                <p>En esta secuela altamente esperada de la aclamada película de Pixar, seguimos a Riley mientras enfrenta los desafíos de la adolescencia. Las emociones originales deben adaptarse a los nuevos sentimientos que surgen, creando una historia conmovedora y divertida sobre el crecimiento y la aceptación.</p>
+            </div>
+
+            <div class="details-section">
+                <h2>Elenco Principal</h2>
+                <div class="cast-grid">
+                    <div class="cast-member">
+                        <img src="img/amy-poehler.jpg" alt="Amy Poehler">
+                        <h3>Amy Poehler</h3>
+                        <p>Alegría</p>
+                    </div>
+                    <div class="cast-member">
+                        <img src="img/phyllis-smith.jpg" alt="Phyllis Smith">
+                        <h3>Phyllis Smith</h3>
+                        <p>Tristeza</p>
+                    </div>
+                    <div class="cast-member">
+                        <img src="img/lewis-black.jpg" alt="Lewis Black">
+                        <h3>Lewis Black</h3>
+                        <p>Ira</p>
+                    </div>
+                    <div class="cast-member">
+                        <img src="img/maya-hawke.jpg" alt="Maya Hawke">
+                        <h3>Maya Hawke</h3>
+                        <p>Ansiedad</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h2>Detalles Técnicos</h2>
+                <div class="tech-details">
+                    
+                    <div class="tech-item">
+                        <span class="tech-label">Director:</span>
+                        <span class="tech-value">Kelsey Mann</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-label">Guionistas:</span>
+                        <span class="tech-value">Meg LeFauve, Dave Holstein</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-label">Estudio:</span>
+                        <span class="tech-value">Pixar Animation Studios</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-label">Distribuidora:</span>
+                        <span class="tech-value">Walt Disney Studios Motion Pictures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Películas Relacionadas -->
+    <section class="related-movies">
+        <br><br>
+        <h2>Películas Relacionadas</h2>
+        <div class="movies-grid">
+            <div class="movie-card">
+                <img src="img/soul.jpg" alt="Soul">
+                <h3>Soul</h3>
+            </div>
+            <div class="movie-card">
+                <img src="img/turning-red.jpg" alt="Turning Red">
+                <h3>Turning Red</h3>
+            </div>
+            <div class="movie-card">
+                <img src="img/luca.jpg" alt="Luca">
+                <h3>Luca</h3>
+            </div>
+        </div>
+        <br><br>
+    </section>
+
+    <script>
+        // Función para mostrar el tráiler
+        function showTrailer() {
+            const modal = document.getElementById('trailerModal');
+            const video = document.getElementById('trailerVideo');
+            modal.style.display = "block";
+            video.play();
+        }
+
+        // Función para cerrar el modal del tráiler
+        function closeTrailer() {
+            const modal = document.getElementById('trailerModal');
+            const video = document.getElementById('trailerVideo');
+            video.pause();
+            modal.style.display = "none";
+        }
+
+        // Cerrar el modal si se hace clic fuera del video
+        window.onclick = function(event) {
+            const modal = document.getElementById('trailerModal');
+            if (event.target == modal) {
+                closeTrailer();
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBooks - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span>
+                    <span class="logo-books">Books</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="audiolibros.html" class="nav-link">Audiolibros</a>
+                <a href="ebooks.html" class="nav-link">eBooks</a>
+                <a href="audioseries.html" class="nav-link">Audioseries</a>
+                <a href="peliculas.html" class="nav-link">Películas</a>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="nav-link">Iniciar sesión</a>
+                <a href="planes.html" class="nav-link subscribe-btn">
+                    <i class="fas fa-crown"></i>
+                    Suscríbete
+                </a>
+                <div class="search-container">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar libros, autores...">
+                        <span class="search-close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<br><br>
+    <!-- Sección Hero -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>eBooks</h1>
+            <div class="hero-text">
+                <p>Descubre nuestra biblioteca digital con más de 500,000 eBooks. Lee en cualquier dispositivo, sin límites y sin conexión. ¡Nuevos títulos cada semana!</p>
+            </div>
+            <a href="planes.html" class="subscribe-button">
+                <i class="fas fa-crown"></i>
+                COMENZAR PRUEBA GRATIS
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="img/hero-ebooks.jpg" alt="Persona leyendo en tablet">
+        </div>
+    </section>
+
+    <!-- Contenido principal de eBooks -->
+    <main class="main-content">
+        <section class="catalog-section">
+            <div class="category">
+                <div class="category-title">
+                    <h2>eBooks Destacados</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="free">Gratuitos</button>
+                        <button class="filter-btn" data-filter="premium">Premium</button>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <!-- Libro 1 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook1.jpg" alt="Harry Potter">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Harry Potter y la Piedra Filosofal</h3>
+                            <p class="book-author">J.K. Rowling</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (8.3k)</span>
+                            </div>
+                            <button class="get-button" onclick="window.location.href='compra-ebook-harry-potter.html'">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 2 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook2.jpg" alt="El Principito">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Principito</h3>
+                            <p class="book-author">Antoine de Saint-Exupéry</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (6.2k)</span>
+                            </div>
+                            <button class="get-button" onclick="window.location.href='principito-preview.html'">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 3 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook3.jpg" alt="Crónica de una muerte anunciada">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Crónica de una muerte anunciada</h3>
+                            <p class="book-author">Gabriel García Márquez</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (3.8k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 4 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook4.jpg" alt="Don Quijote">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Don Quijote de la Mancha</h3>
+                            <p class="book-author">Miguel de Cervantes</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (9.1k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 5 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook5.jpg" alt="Dune">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Dune</h3>
+                            <p class="book-author">Frank Herbert</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (6.3k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 6 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook6.jpg" alt="La Metamorfosis">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">La Metamorfosis</h3>
+                            <p class="book-author">Franz Kafka</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.2 (3.8k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 7 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook7.jpg" alt="El Nombre del Viento">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Nombre del Viento</h3>
+                            <p class="book-author">Patrick Rothfuss</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (7.2k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 8 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook8.jpg" alt="Orgullo y Prejuicio">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Orgullo y Prejuicio</h3>
+                            <p class="book-author">Jane Austen</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (5.9k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 9 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook9.jpg" alt="Los Juegos del Hambre">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Los Juegos del Hambre</h3>
+                            <p class="book-author">Suzanne Collins</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (8.4k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 10 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook10.jpg" alt="Drácula">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Drácula</h3>
+                            <p class="book-author">Bram Stoker</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (4.2k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 11 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook11.jpg" alt="El Código Da Vinci">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Código Da Vinci</h3>
+                            <p class="book-author">Dan Brown</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0 (7.8k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 12 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook12.jpg" alt="La Odisea">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">La Odisea</h3>
+                            <p class="book-author">Homero</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (3.1k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 13 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook13.jpg" alt="El Señor de los Anillos">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Señor de los Anillos</h3>
+                            <p class="book-author">J.R.R. Tolkien</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (12.3k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 14 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook14.jpg" alt="Las Mil y Una Noches">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Las Mil y Una Noches</h3>
+                            <p class="book-author">Anónimo</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (5.6k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 15 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook15.jpg" alt="1984">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">1984</h3>
+                            <p class="book-author">George Orwell</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (9.2k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 16 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook16.jpg" alt="El Retrato de Dorian Gray">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Retrato de Dorian Gray</h3>
+                            <p class="book-author">Oscar Wilde</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (4.7k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 17 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook17.jpg" alt="Neuromante">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Neuromante</h3>
+                            <p class="book-author">William Gibson</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.3 (3.9k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 18 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook18.jpg" alt="La Divina Comedia">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">La Divina Comedia</h3>
+                            <p class="book-author">Dante Alighieri</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (6.1k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 19 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook19.jpg" alt="American Gods">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">American Gods</h3>
+                            <p class="book-author">Neil Gaiman</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (7.4k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 20 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook20.jpg" alt="Frankenstein">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Frankenstein</h3>
+                            <p class="book-author">Mary Shelley</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (5.2k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 21 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook21.jpg" alt="El Alquimista">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">El Alquimista</h3>
+                            <p class="book-author">Paulo Coelho</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (8.7k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 22 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook22.jpg" alt="Romeo y Julieta">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Romeo y Julieta</h3>
+                            <p class="book-author">William Shakespeare</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (7.8k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 23 -->
+                    <div class="ebook-card" data-category="premium">
+                        <div class="ebook-badge premium">Premium</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook23.jpg" alt="Fundación">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Fundación</h3>
+                            <p class="book-author">Isaac Asimov</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (6.5k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer ahora <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Libro 24 -->
+                    <div class="ebook-card" data-category="free">
+                        <div class="ebook-badge free">Gratis</div>
+                        <div class="ebook-image">
+                            <img src="img/ebook24.jpg" alt="Moby Dick">
+                            <div class="ebook-type">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="book-title">Moby Dick</h3>
+                            <p class="book-author">Herman Melville</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (4.3k)</span>
+                            </div>
+                            <button class="get-button">
+                                Leer gratis <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sección de Información -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Biblioteca Digital</h3>
+                <p>Más de 500,000 eBooks disponibles en nuestra biblioteca. Nuevos títulos agregados semanalmente.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-tablet-alt"></i>
+                </div>
+                <h3>Lee Donde Sea</h3>
+                <p>Accede a tus eBooks favoritos en cualquier dispositivo, incluso sin conexión a internet.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <h3>Personalización</h3>
+                <p>Ajusta el tamaño de letra, el tema y el diseño según tus preferencias de lectura.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-sync"></i>
+                </div>
+                <h3>Sincronización</h3>
+                <p>Tu progreso de lectura se sincroniza automáticamente en todos tus dispositivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Funcionalidad de filtrado
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const books = document.querySelectorAll('.ebook-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    books.forEach(book => {
+                        if (filterValue === 'all' || book.getAttribute('data-category') === filterValue) {
+                            book.style.display = 'block';
+                            book.style.animation = 'fadeIn 0.5s ease forwards';
+                        } else {
+                            book.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

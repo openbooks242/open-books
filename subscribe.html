@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscripción - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .subscription-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            padding: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .subscription-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #FF4500, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3rem;
+            line-height: 1.4;
+            max-width: 100%;
+            margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FF4500;
+            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .payment-method {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .payment-method::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF4500, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .payment-method:hover::after {
+            transform: scaleX(1);
+        }
+
+        .payment-method img {
+            width: 45px;
+            height: auto;
+            filter: brightness(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover img {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .payment-method.active img {
+            filter: brightness(1.2);
+        }
+
+        .payment-method span {
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #FF4500;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .terms a {
+            color: #FF4500;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+            color: #ff5722;
+        }
+
+        @media (max-width: 768px) {
+            .subscription-container {
+                padding: 1.5rem;
+            }
+
+            .subscription-form {
+                padding: 2rem;
+            }
+
+            .form-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .form-header p {
+                font-size: 1.1rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="subscription-container">
+        <form class="subscription-form" onsubmit="handleSubscription(event)">
+            <div class="form-header">
+                <h1>¡Bienvenido a Open Books!</h1>
+                <p>Descubre un mundo de historias con tu prueba gratuita de 7 días</p>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" required placeholder="Tu nombre completo">
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" required placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>Número de Teléfono</label>
+                <input type="tel" required placeholder="+1234567890">
+            </div>
+
+            <div class="form-group">
+                <label>Método de Pago</label>
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/visa.png" alt="Visa">
+                    </div>
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/mastercard.png" alt="Mastercard">
+                    </div>
+                    <div class="payment-method" onclick="selectPaymentMethod(this)">
+                        <img src="img/paypal.png" alt="PayPal">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Número de Tarjeta</label>
+                <input type="text" required placeholder="1234 5678 9012 3456">
+            </div>
+
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <label>Fecha de Expiración</label>
+                    <input type="text" required placeholder="MM/YY">
+                </div>
+                <div>
+                    <label>CVV</label>
+                    <input type="text" required placeholder="123">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-lock"></i>
+                Comenzar Prueba Gratis
+            </button>
+
+            <p class="terms">
+                Al suscribirte, aceptas nuestros <a href="#">Términos y Condiciones</a> y <a href="#">Política de Privacidad</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function selectPaymentMethod(element) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        function handleSubscription(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: '¡Prueba Gratis Activada!',
+                html: `
+                    <div style="text-align: left; margin-top: 1rem;">
+                        <p style="margin-bottom: 1rem;">Tu solicitud ha sido recibida con éxito.</p>
+                        <p style="margin-bottom: 1rem;">📧 Recibirás un correo electrónico en los próximos minutos con:</p>
+                        <ul style="margin-left: 1rem;">
+                            <li>Confirmación de tu suscripción</li>
+                            <li>Instrucciones para acceder a tu cuenta</li>
+                            <li>Detalles de tu período de prueba gratuita</li>
+                        </ul>
+                    </div>
+                `,
+                icon: 'success',
+                confirmButtonColor: '#FF4500',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                }
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas - Open Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/peliculas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-open">Open</span>
+                    <span class="logo-books">Books</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="audiolibros.html" class="nav-link">Audiolibros</a>
+                <a href="ebooks.html" class="nav-link">eBooks</a>
+                <a href="audioseries.html" class="nav-link">Audioseries</a>
+                <a href="peliculas.html" class="nav-link active">Películas</a>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="nav-link">Iniciar sesión</a>
+                <a href="planes.html" class="nav-link subscribe-btn">
+                    <i class="fas fa-crown"></i>
+                    Suscríbete
+                </a>
+                <div class="search-container">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar libros, autores...">
+                        <span class="search-close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<br><br>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Peliculas</h1>
+            <div class="hero-text">
+                <p>¡Explora nuestra colección de películas y sumérgete en historias que te transportarán a otros mundos! Desde emocionantes aventuras hasta conmovedores dramas, pasando por comedias que te harán reír a carcajadas, tenemos algo para todos los gustos.</p>
+            </div>
+            <a href="#" class="subscribe-button">
+                Comenzar a ver 
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="img/peliculas-hero.jpg" alt="Películas">
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="catalog-section">
+        <div class="featured-header">
+            <h2 class="featured-title">Películas destacadas</h2>
+        </div>
+        <div class="category">
+            <div class="category-title">
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">Todas</button>
+                    <button class="category-btn" data-category="accion">Acción</button>
+                    <button class="category-btn" data-category="drama">Drama</button>
+                    <button class="category-btn" data-category="ciencia-ficcion">Ciencia Ficción</button>
+                    <button class="category-btn" data-category="comedia">Comedia</button>
+                </div>
+            </div>
+            <div class="movies-grid">
+                <!-- Película 1 -->
+                <div class="movie-card" data-category="animacion">
+                    <div class="movie-image">
+                        <img src="img/inside-out-2.jpg" alt="Inside Out 2">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Inside Out 2</h3>
+                        <p class="movie-genre">Animación | Comedia</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 45min</span>
+                            <span class="rating">4.8</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=1" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 2 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/deadpool-wolverine.jpg" alt="Deadpool & Wolverine">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Deadpool & Wolverine</h3>
+                        <p class="movie-genre">Acción | Ciencia Ficción</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 15min</span>
+                            <span class="rating">4.9</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=2" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 3 -->
+                <div class="movie-card" data-category="animacion">
+                    <div class="movie-image">
+                        <img src="img/moana-2.jpg" alt="Moana 2">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Moana 2</h3>
+                        <p class="movie-genre">Animación | Aventura</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 50min</span>
+                            <span class="rating">4.7</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=3" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 4 -->
+                <div class="movie-card" data-category="animacion">
+                    <div class="movie-image">
+                        <img src="img/despicable-me-4.jpg" alt="Despicable Me 4">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Despicable Me 4</h3>
+                        <p class="movie-genre">Animación | Comedia</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 40min</span>
+                            <span class="rating">4.6</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=4" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 5 -->
+                <div class="movie-card" data-category="musical">
+                    <div class="movie-image">
+                        <img src="img/wicked.jpg" alt="Wicked">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Wicked</h3>
+                        <p class="movie-genre">Musical | Fantasía</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 30min</span>
+                            <span class="rating">4.8</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=5" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 6 -->
+                <div class="movie-card" data-category="animacion">
+                    <div class="movie-image">
+                        <img src="img/mufasa.jpg" alt="Mufasa: El Rey León">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Mufasa: El Rey León</h3>
+                        <p class="movie-genre">Animación | Drama</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 00min</span>
+                            <span class="rating">4.7</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=6" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 7 -->
+                <div class="movie-card" data-category="ciencia-ficcion">
+                    <div class="movie-image">
+                        <img src="img/dune-2.jpg" alt="Dune: Part Two">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Dune: Part Two</h3>
+                        <p class="movie-genre">Ciencia Ficción | Aventura</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 45min</span>
+                            <span class="rating">4.9</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=7" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 8 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/godzilla-kong.jpg" alt="Godzilla y Kong: El Nuevo Imperio">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Godzilla y Kong: El Nuevo Imperio</h3>
+                        <p class="movie-genre">Acción | Ciencia Ficción</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 10min</span>
+                            <span class="rating">4.6</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=8" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 9 -->
+                <div class="movie-card" data-category="animacion">
+                    <div class="movie-image">
+                        <img src="img/kung-fu-panda-4.jpg" alt="Kung Fu Panda 4">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Kung Fu Panda 4</h3>
+                        <p class="movie-genre">Animación | Acción</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 50min</span>
+                            <span class="rating">4.7</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=9" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 10 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/sonic-3.jpg" alt="Sonic 3">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Sonic 3</h3>
+                        <p class="movie-genre">Acción | Aventura</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 00min</span>
+                            <span class="rating">4.5</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=10" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 11 -->
+                <div class="movie-card" data-category="drama">
+                    <div class="movie-image">
+                        <img src="img/yolo.jpg" alt="YOLO">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">YOLO</h3>
+                        <p class="movie-genre">Drama | Comedia</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 55min</span>
+                            <span class="rating">4.4</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=11" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 12 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/venom-3.jpg" alt="Venom 3">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Venom 3</h3>
+                        <p class="movie-genre">Acción | Ciencia Ficción</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 15min</span>
+                            <span class="rating">4.6</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=12" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 13 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/gladiator-2.webp" alt="Gladiator 2">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Gladiator 2</h3>
+                        <p class="movie-genre">Acción | Drama</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 30min</span>
+                            <span class="rating">4.8</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=13" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 14 -->
+                <div class="movie-card" data-category="comedia">
+                    <div class="movie-image">
+                        <img src="img/beetlejuice-2.jpg" alt="Beetlejuice Beetlejuice">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Beetlejuice Beetlejuice</h3>
+                        <p class="movie-genre">Comedia | Fantasía</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 50min</span>
+                            <span class="rating">4.5</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=14" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 15 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/bad-boys-4.jpg" alt="Bad Boys 4">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Bad Boys 4</h3>
+                        <p class="movie-genre">Acción | Comedia</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 10min</span>
+                            <span class="rating">4.6</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=15" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 16 -->
+                <div class="movie-card" data-category="ciencia-ficcion">
+                    <div class="movie-image">
+                        <img src="img/planet-apes.jpg" alt="Kingdom of the Planet of the Apes">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Kingdom of the Planet of the Apes</h3>
+                        <p class="movie-genre">Ciencia Ficción | Acción</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 20min</span>
+                            <span class="rating">4.7</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=16" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 17 -->
+                <div class="movie-card" data-category="accion">
+                    <div class="movie-image">
+                        <img src="img/twisters.jpg" alt="Twisters">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Twisters</h3>
+                        <p class="movie-genre">Acción | Drama</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 05min</span>
+                            <span class="rating">4.5</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=17" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 18 -->
+                <div class="movie-card" data-category="drama">
+                    <div class="movie-image">
+                        <img src="img/romper-circulo.jpg" alt="Romper el Círculo">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Romper el Círculo</h3>
+                        <p class="movie-genre">Drama | Suspenso</p>
+                        <div class="movie-meta">
+                            <span class="duration">1h 55min</span>
+                            <span class="rating">4.6</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=18" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 19 -->
+                <div class="movie-card" data-category="ciencia-ficcion">
+                    <div class="movie-image">
+                        <img src="img/alien-romulus.jpg" alt="Alien: Romulus">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Alien: Romulus</h3>
+                        <p class="movie-genre">Ciencia Ficción | Terror</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 15min</span>
+                            <span class="rating">4.7</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=19" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Película 20 -->
+                <div class="movie-card" data-category="ciencia-ficcion">
+                    <div class="movie-image">
+                        <img src="img/robot-salvaje.jpg" alt="Robot Salvaje">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Robot Salvaje</h3>
+                        <p class="movie-genre">Ciencia Ficción | Acción</p>
+                        <div class="movie-meta">
+                            <span class="duration">2h 00min</span>
+                            <span class="rating">4.5</span>
+                        </div>
+                        <a href="pelicula-detalle.html?id=20" class="watch-button">
+                            Ver detalles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información -->
+    <section class="info-section">
+        <div class="info-grid">
+            <!-- Tarjeta 1 -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Catálogo Extenso</h3>
+                <p>Más de 1,000 películas disponibles en nuestra biblioteca. Nuevos títulos agregados semanalmente.</p>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Ve Donde Sea</h3>
+                <p>Disfruta de tus películas favoritas en cualquier dispositivo, en cualquier momento y lugar.</p>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Calidad Premium</h3>
+                <p>Películas en alta definición y calidad 4K para la mejor experiencia visual.</p>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Sincronización</h3>
+                <p>Continúa viendo desde donde lo dejaste en cualquier dispositivo automáticamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/peliculas.js"></script>
+</body>
+</html> 
